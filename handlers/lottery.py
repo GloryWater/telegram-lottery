@@ -5,6 +5,8 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 import asyncpg
 
+from handlers.start import keyboard_builder
+
 lottery_router = Router(name=__name__)
 
 
@@ -23,11 +25,12 @@ async def lottery_recipe_entered(message: Message, state: FSMContext) -> None:
     await state.clear()
     conn = await asyncpg.connect(user=os.getenv("DB_USER"), password=os.getenv("DB_PASSWORD"),
                                  database='gloryLottery', host='127.0.0.1')
-    selection = await conn.fetchrow("SELECT * FROM listofcodes WHERE value = $1", message.text)
+    selection = await conn.fetchrow("SELECT * FROM listofcodes WHERE value = $1 AND activatedbyuserid = 0", message.text)
     if selection:
         await conn.execute("UPDATE listofcodes SET activatedbyuserid = $1 WHERE value = $2 ",
                            message.from_user.id, message.text)
-        await message.answer("Ваш чек зарегистрирован успешно!\nЕсть ещё чеки? - Регистрируй дальше!")
+        await message.answer("Ваш чек зарегистрирован успешно!\nЕсть ещё чеки? - Регистрируй дальше!",
+                             reply_markup=keyboard_builder())
     else:
         await message.answer("Вы ввели код неправильно либо чек уже зарегистрирован.")
     await conn.close()
