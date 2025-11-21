@@ -8,12 +8,17 @@ from aiogram.types import InlineKeyboardButton
 start_router = Router(name=__name__)
 
 
-def keyboard_builder() -> InlineKeyboardMarkup:
+def keyboard_builder(isEnabledSecondButton: bool = True) -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
-    builder.add(InlineKeyboardButton(
-        text="Учавствовать",
+    builder.row(InlineKeyboardButton(
+        text="Зарегистрировать чек",
         callback_data="start_participating"
     ))
+    if isEnabledSecondButton:
+        builder.row(InlineKeyboardButton(
+            text="Мои чеки",
+            callback_data="view_my_codes"
+        ))
     return builder.as_markup()
 
 
