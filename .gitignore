@@ -2,4 +2,4 @@
 test.py
 /typings/
 /.venv/
-handlers/__pycache__/*
+handlers/__pycache__/
