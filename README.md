@@ -15,7 +15,11 @@
 
 ## 3. Скриншоты
 #### 3.1 Функционирование программы со стороны пользователя:
-<img width="616" height="570" alt="image" src="https://github.com/user-attachments/assets/f317dd0c-bf9c-4fbb-8e49-b8f034269825" />
+<img width="622" height="759" alt="image" src="https://github.com/user-attachments/assets/7060c447-85b7-4e46-90d1-6463c79d0c1a" />
+
+<img width="544" height="369" alt="image" src="https://github.com/user-attachments/assets/9be25c37-6fb2-4dc8-acf7-1dccd7d49936" />
+
+
 
 #### 3.2 Выборка из базы данных
 Первые 3 записи — уже зарегистрированные коды (например, код "992779" был введён пользователем "2122445084"). Последние 3 записи — коды, доступные для регистрации.
